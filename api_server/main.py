@@ -34,6 +34,17 @@ async def all_products():
     return Response(resp)
 
 
+@app.get("/products/{pk}")
+async def one_product(pk: str):
+    '''
+    get a single product
+    '''
+    resp = requests.get(
+        url=f"{get_domain(services.INVENTORY)}/{pk}"
+    )
+    return Response(resp)
+
+
 @app.get("/similar-products")
 async def similar_products(tag: str):
     '''
@@ -71,7 +82,7 @@ async def orders(order: Order):
 
 
 @app.get("/order/{pk}")
-async def one_orders(pk: str, token: str):
+async def one_order(pk: str, token: str):
     '''
     get a single order
     '''
