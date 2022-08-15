@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redis
+    ports:
+      - "8001:8001" # TODO: remove this in future, only for debuging purpose
+
+  db_migrator_service:
+    build: db_migrator_service
+    container_name: db_migrator_service
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  inventory:
+    build: inventory
+    container_name: inventory
+    env_file:
+      - .env
+    ports:
+      - "8080:8000" # TODO: remove this in future, only for debuging purpose, should only expose API container.
+    volumes:
+      - ./inventory:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service
+
+  orders:
+    build: orders
+    container_name: orders
+    env_file:
+      - .env
+    ports:
+      - "8081:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
+    volumes:
+      - ./orders:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service
+
+  recommendation:
+    build: recommendation
+    container_name: recommendation
+    env_file:
+      - .env
+    ports:
+      - "8082:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
+    volumes:
+      - ./recommendation:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service
+
+  order_management_service:
+    build: order_management_service
+    container_name: order_management_service
+    env_file:
+      - .env
+    volumes:
+      - ./order_management_service:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service

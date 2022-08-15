@@ -1,0 +1,20 @@
+[submodule "inventory_core"]
+	path = inventory/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "orders_core"]
+	path = orders/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "recommendation_core"]
+	path = recommendation/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "db_migrator_service"]
+	path = db_migrator_service/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "order_management_service"]
+	path = order_management_service/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
