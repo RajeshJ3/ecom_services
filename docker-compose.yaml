@@ -21,7 +21,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8080:8000" # TODO: remove this in future, only for debuging purpose, should only expose API container.
+      - "8081:8000" # TODO: remove this in future, only for debuging purpose, should only expose API container.
     volumes:
       - ./inventory:/usr/src/service
     depends_on:
@@ -34,7 +34,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8081:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
+      - "8082:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
     volumes:
       - ./orders:/usr/src/service
     depends_on:
@@ -47,7 +47,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8082:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
+      - "8083:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
     volumes:
       - ./recommendation:/usr/src/service
     depends_on:
@@ -61,6 +61,19 @@ services:
       - .env
     volumes:
       - ./order_management_service:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service
+
+  api_server:
+    build: api_server
+    container_name: api_server
+    env_file:
+      - .env
+    ports:
+      - "8080:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
+    volumes:
+      - ./api_server:/usr/src/service
     depends_on:
       - redis
       - db_migrator_service

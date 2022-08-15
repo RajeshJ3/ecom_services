@@ -18,3 +18,7 @@
 	path = order_management_service/core
 	url = git@github.com:RajeshJ3/ecom_core_module.git
 	branch = main
+[submodule "api_server"]
+	path = api_server/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
