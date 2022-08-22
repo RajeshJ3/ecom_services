@@ -22,3 +22,7 @@
 	path = api_server/core
 	url = git@github.com:RajeshJ3/ecom_core_module.git
 	branch = main
+[submodule "ads"]
+	path = ads/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main

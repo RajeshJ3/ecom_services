@@ -15,5 +15,6 @@ app.add_middleware(
 )
 
 @app.get("/")
-async def products(tag: str):
-    return Product.find(Product.tags << tag).all()
+async def products(pk: str):
+    product = Product.get(pk)
+    return Product.find(Product.tags << product.tags).all()

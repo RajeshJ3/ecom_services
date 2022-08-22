@@ -46,13 +46,25 @@ async def one_product(pk: str):
 
 
 @app.get("/similar-products")
-async def similar_products(tag: str):
+async def similar_products(pk: str):
     '''
     get similar products
     '''
     resp = requests.get(
         url=f"{get_domain(services.RECOMMENDATION)}",
-        params={"tag": tag}
+        params={"pk": pk}
+    )
+    return Response(resp)
+
+
+@app.get("/ad")
+async def ads(pk: str):
+    '''
+    get an ad
+    '''
+    resp = requests.get(
+        url=f"{get_domain(services.ADS)}",
+        params={"pk": pk}
     )
     return Response(resp)
 

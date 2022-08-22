@@ -1,5 +1,6 @@
 
 # services list
-INVENTORY = "inventory"
+ADS = "ads"
 ORDERS = "orders"
+INVENTORY = "inventory"
 RECOMMENDATION = "recommendation"

@@ -53,6 +53,19 @@ services:
     depends_on:
       - redis
       - db_migrator_service
+  
+  ads:
+    build: ads
+    container_name: ads
+    env_file:
+      - .env
+    ports:
+      - "8084:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
+    volumes:
+      - ./ads:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service
 
   order_management_service:
     build: order_management_service
