@@ -81,26 +81,73 @@ async def all_orders(token: str):
     return Response(resp)
 
 
-@app.post("/orders")
-async def orders(order: Order):
+@app.get("/order")
+async def order(pk: str, token: str):
     '''
-    create a new order
+    fetch an order related 
     '''
-    resp = requests.post(
-        url=f"{get_domain(services.ORDERS)}",
-        json=order.dict()
+    resp = requests.get(
+        url=f"{get_domain(services.ORDERS)}/{pk}",
+        params={
+            "token": token,
+        }
     )
     return Response(resp)
 
 
-@app.get("/order/{pk}")
-async def one_order(pk: str, token: str):
+@app.get("/current-order")
+async def current_order(token: str):
     '''
-    get a single order
+    fetch all orders related to a particular order 
     '''
+
     resp = requests.get(
-        url=f"{get_domain(services.ORDERS)}/{pk}",
+        url=f"{get_domain(services.ORDERS)}/current-order",
         params={"token": token}
+    )
+
+    if not resp.status_code == 200:
+        return {}
+
+    data = resp.json()
+
+    order_items = data["order_items"]
+    updated_order_items = []
+    for order_item in order_items:
+        updated_order_items.append(requests.get(
+            url=f"{get_domain(services.INVENTORY)}/{order_item}").json())
+
+    data["order_items"] = updated_order_items
+
+    return data
+
+
+@app.post("/add-to-cart")
+async def add_to_cart(pk: str, token: str):
+    '''
+    add item to cart
+    '''
+    resp = requests.post(
+        url=f"{get_domain(services.ORDERS)}/add-to-cart",
+        params={
+            "pk": pk,
+            "token": token
+        }
+    )
+    return Response(resp)
+
+
+@app.post("/remove-from-cart")
+async def remove_from_cart(pk: str, token: str):
+    '''
+    remove item from cart
+    '''
+    resp = requests.post(
+        url=f"{get_domain(services.ORDERS)}/remove-from-cart",
+        params={
+            "pk": pk,
+            "token": token
+        }
     )
     return Response(resp)
 
