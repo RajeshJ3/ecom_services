@@ -26,3 +26,7 @@
 	path = ads/core
 	url = git@github.com:RajeshJ3/ecom_core_module.git
 	branch = main
+[submodule "invoice_service"]
+	path = invoice_service/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main

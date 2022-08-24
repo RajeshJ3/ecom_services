@@ -23,14 +23,6 @@ async def all_orders(token: str):
     return Order.find(Order.token == token).all()
 
 
-@app.get("/{pk}")
-async def orders(pk: str, token: str):
-    return Order.find(
-        (Order.token == token) &
-        (Order.pk == pk)
-    ).first()
-
-
 @app.get("/current-order")
 async def current_order(token: str):
     try:
@@ -42,6 +34,14 @@ async def current_order(token: str):
         return responses.Response("{}", status_code=404)
     except:
         return responses.Response("{}", status_code=500)
+
+
+@app.get("/{pk}")
+async def orders(pk: str, token: str):
+    return Order.find(
+        (Order.token == token) &
+        (Order.pk == pk)
+    ).first()
 
 
 @app.post("/add-to-cart")

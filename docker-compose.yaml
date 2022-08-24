@@ -33,8 +33,6 @@ services:
     container_name: orders
     env_file:
       - .env
-    ports:
-      - "8082:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
     volumes:
       - ./orders:/usr/src/service
     depends_on:
@@ -46,8 +44,6 @@ services:
     container_name: recommendation
     env_file:
       - .env
-    ports:
-      - "8083:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
     volumes:
       - ./recommendation:/usr/src/service
     depends_on:
@@ -59,8 +55,6 @@ services:
     container_name: ads
     env_file:
       - .env
-    ports:
-      - "8084:8000"  # TODO: remove this in future, only for debuging purpose, should only expose API container.
     volumes:
       - ./ads:/usr/src/service
     depends_on:
@@ -74,6 +68,17 @@ services:
       - .env
     volumes:
       - ./order_management_service:/usr/src/service
+    depends_on:
+      - redis
+      - db_migrator_service
+
+  invoice_service:
+    build: invoice_service
+    container_name: invoice_service
+    env_file:
+      - .env
+    volumes:
+      - ./invoice_service:/usr/src/service
     depends_on:
       - redis
       - db_migrator_service
