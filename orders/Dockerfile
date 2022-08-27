@@ -1,9 +1,0 @@
-FROM python:3.8.10-slim
-ENV PYTHONUNBUFFERED=1
-
-WORKDIR /usr/src/service
-COPY . /usr/src/service
-
-RUN pip install -r requirements.txt
-
-CMD ["uvicorn", "main:app", "--reload", "--host=0.0.0.0"]
