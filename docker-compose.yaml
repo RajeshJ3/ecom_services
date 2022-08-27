@@ -1,0 +1,117 @@
+version: '3'
+
+services:
+  redis:
+    image: redis/redis-stack:latest
+    container_name: redisservice
+    volumes:
+      - .data/:/data
+
+  dbmigrator:
+    build: dbmigrator
+    container_name: dbmigratorservice
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  productcatalog:
+    build: productcatalog
+    container_name: productcatalogservice
+    env_file:
+      - .env
+    volumes:
+      - ./productcatalog:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  order:
+    build: order
+    container_name: orderservice
+    env_file:
+      - .env
+    volumes:
+      - ./order:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  recommendation:
+    build: recommendation
+    container_name: recommendationservice
+    env_file:
+      - .env
+    volumes:
+      - ./recommendation:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  ads:
+    build: ads
+    container_name: adservice
+    env_file:
+      - .env
+    volumes:
+      - ./ads:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  checkout:
+    build: checkout
+    container_name: checkoutservice
+    env_file:
+      - .env
+    volumes:
+      - ./checkout:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  payment:
+    build: payment
+    container_name: paymentservice
+    env_file:
+      - .env
+    volumes:
+      - ./payment:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  invoice:
+    build: invoice
+    container_name: invoiceservice
+    env_file:
+      - .env
+    volumes:
+      - ./invoice:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  email:
+    build: email
+    container_name: emailservice
+    env_file:
+      - .env
+    volumes:
+      - ./email:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator
+
+  apiserver:
+    build: apiserver
+    container_name: apiserverservice
+    env_file:
+      - .env
+    ports:
+      - "8080:8000" # TODO: remove this in future, only for debuging purpose, should only expose API container.
+    volumes:
+      - ./apiserver:/usr/src/service
+    depends_on:
+      - redis
+      - dbmigrator

@@ -1,0 +1,34 @@
+{
+  "home": {
+    "name": "Home",
+    "path": "/"
+  },
+  "blob": {
+    "name": "Blob",
+    "path": "/blob/:id"
+  },
+  "cart": {
+    "name": "Cart",
+    "path": "/cart"
+  },
+  "orders": {
+    "name": "Orders",
+    "path": "/orders"
+  },
+  "payment": {
+    "name": "Payment",
+    "path": "/payment/:id"
+  },
+  "contact": {
+    "name": "Contact",
+    "path": "/contact"
+  },
+  "privacy": {
+    "name": "Privacy Policy",
+    "path": "/privacy"
+  },
+  "terms": {
+    "name": "Terms & Conditions",
+    "path": "/terms"
+  }
+}

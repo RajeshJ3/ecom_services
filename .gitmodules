@@ -1,0 +1,40 @@
+[submodule "productcatalog_core"]
+	path = productcatalog/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "order_core"]
+	path = order/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "recommendation_core"]
+	path = recommendation/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "dbmigrator_core"]
+	path = dbmigrator/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "payment_core"]
+	path = payment/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "apiserver_core"]
+	path = apiserver/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "ads_core"]
+	path = ads/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "invoice_core"]
+	path = invoice/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "checkout_core"]
+	path = checkout/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
+[submodule "email_core"]
+	path = email/core
+	url = git@github.com:RajeshJ3/ecom_core_module.git
+	branch = main
