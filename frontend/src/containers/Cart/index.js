@@ -20,6 +20,7 @@ import { CartTable } from "../../components/custom/cartTable";
 import { getToken } from "../../utils/helpers";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/config";
 
 function createData(id, img, title, price) {
   return { id, img, title, price };
@@ -52,7 +53,7 @@ export default function Cart() {
     setLoadingData(true);
     axios({
       method: "GET",
-      url: `http://localhost:8080/current-order`,
+      url: `${BASE_URL}/current-order`,
       params: {
         token: getToken(),
       },
@@ -86,7 +87,7 @@ export default function Cart() {
     setSubmitting(true);
     axios({
       method: "PATCH",
-      url: `http://localhost:8080/orders/${data.pk}`,
+      url: `${BASE_URL}/orders/${data.pk}`,
       params: {
         token: getToken(),
       },

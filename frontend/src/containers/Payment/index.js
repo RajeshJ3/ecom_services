@@ -12,6 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Success from "../../components/wrappers/Success";
 import axios from "axios";
 import { getToken } from "../../utils/helpers";
+import { BASE_URL } from "../../utils/config";
 
 export default function Payment() {
   const [paid, setPaid] = useState(false);
@@ -27,7 +28,7 @@ export default function Payment() {
   useEffect(() => {
     axios({
       method: "POST",
-      url: `http://localhost:8080/orders/${id}`,
+      url: `${BASE_URL}/orders/${id}`,
       params: {
         token: getToken(),
         status: "completed",

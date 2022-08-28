@@ -9,6 +9,7 @@ import { getToken } from "../../utils/helpers";
 import Loading from "../../components/wrappers/Loading";
 import { Button, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/config";
 
 export default function OrderList() {
   const [loadingData, setLoadingData] = useState(true);
@@ -28,7 +29,7 @@ export default function OrderList() {
     setLoadingData(true);
     axios({
       method: "GET",
-      url: `http://localhost:8080/orders`,
+      url: `${BASE_URL}/orders`,
       params: {
         token: getToken(),
       },
@@ -47,7 +48,7 @@ export default function OrderList() {
     setLoadingInvoice(pk);
     axios({
       method: "GET",
-      url: `http://localhost:8080/order`,
+      url: `${BASE_URL}/order`,
       params: {
         pk: pk,
         token: getToken(),

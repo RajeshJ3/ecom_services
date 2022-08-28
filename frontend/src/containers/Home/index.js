@@ -20,6 +20,7 @@ import Loading from "../../components/wrappers/Loading";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/config";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -37,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:8080/products",
+      url: `${BASE_URL}/products`,
     }).then((res) => {
       setData(res.data);
       setLoading(false);

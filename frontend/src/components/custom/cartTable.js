@@ -13,6 +13,7 @@ import Loading from "../../components/wrappers/Loading";
 import { getToken } from "../../utils/helpers";
 import axios from "axios";
 import { useState } from "react";
+import { BASE_URL } from "../../utils/config";
 
 const CustomTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -39,7 +40,7 @@ export const CartTable = (props) => {
     setRemoving(pk);
     axios({
       method: "POST",
-      url: `http://localhost:8080/remove-from-cart`,
+      url: `${BASE_URL}/remove-from-cart`,
       params: {
         pk: pk,
         token: getToken(),

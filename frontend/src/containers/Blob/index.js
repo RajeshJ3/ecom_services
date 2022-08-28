@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/wrappers/Loading";
 import axios from "axios";
 import { getToken } from "../../utils/helpers";
+import { BASE_URL } from "../../utils/config";
 
 export default function Blob(props) {
   const [loadingData, setLoadingData] = useState(true);
@@ -34,7 +35,7 @@ export default function Blob(props) {
     setLoadingData(true);
     axios({
       method: "GET",
-      url: `http://localhost:8080/products/${id}`,
+      url: `${BASE_URL}/products/${id}`,
     }).then((res) => {
       setData(res.data);
       setLoadingData(false);
@@ -46,7 +47,7 @@ export default function Blob(props) {
     setLoadingSimilarProducts(true);
     axios({
       method: "GET",
-      url: "http://localhost:8080/similar-products",
+      url: `${BASE_URL}/similar-products`,
       params: {
         pk: id,
       },
@@ -65,7 +66,7 @@ export default function Blob(props) {
     setLoadingAd(true);
     axios({
       method: "GET",
-      url: "http://localhost:8080/ad",
+      url: `${BASE_URL}/ad`,
       params: {
         pk: id,
       },
@@ -83,7 +84,7 @@ export default function Blob(props) {
     setAddingToCart(true);
     axios({
       method: "POST",
-      url: "http://localhost:8080/add-to-cart",
+      url: `${BASE_URL}/add-to-cart`,
       params: {
         token: getToken(),
         pk: id,
