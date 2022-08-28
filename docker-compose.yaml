@@ -117,3 +117,11 @@ services:
     depends_on:
       - redis
       - dbmigrator
+
+  frontend:
+    build: frontend
+    container_name: frontend
+    ports:
+      - "3000:3000" # Exposing the frontend app
+    environment:
+      - CHOKIDAR_USEPOLLING=true

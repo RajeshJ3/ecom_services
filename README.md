@@ -178,7 +178,9 @@ microservices](./assets/images/Architecture.jpg)
 
 ### Performance Benchmarks
 
-[If you migrated an existing app to use Redis, please put performance benchmarks here to show the performance improvements.]
+As compared to the previous case where GCP was using **Memorystore (redis)**, having a lot of limitations and constraints, this project is using **Redis Cloud**.
+
+Redis Cloud provides customers real-time performance with linear scaling to **hundreds of millions of operations per second** while providing **local latency** in a global Active-Active deployment with **99.999%** uptime.
 
 ## How to run it locally?
 
@@ -191,7 +193,7 @@ $ git submodule init
 $ git submodule update
 ```
 
-**Step 2.** create a `.env` file
+**Step 2.** Create `.env` file
 
 ```sh
 $ nano .env # save the following credentials into .env file
@@ -211,15 +213,21 @@ REDIS_OM_URL=redis://<user>:<password>@<host>:<port>
 
 In this case you may also remove the `redis` service and dependency from `docker-compose.yaml` file.
 
+**Step 3.** Spin the servers up
+
+```sh
+$ docker compose up --build
+```
+
+**NOTE:** Wait for the `frontend` container to start serving
+
+Now, open [http://localhost:3000/](http://localhost:3000/) in browser.
+
 ### Prerequisites
 
 - Git
 - Docker & docker compose
 - A redis cloud account (optionally)
-
-### Local installation
-
-Already described in **How to run it locally?** section.
 
 ## Deployment
 
@@ -232,16 +240,6 @@ $ kubectl create secret generic credentials --from-env-file .env
 $ kubectl apply -f k8s/deployment.yaml
 ...
 ```
-
-### Netlify
-
-Click [here](https://infinite-blobs.netlify.app) to access the basic deployed version of the web-app.
-
-It makes request to `http://127.0.0.1:8080`, so make sure that you have the backend up and running on port `8080`.
-
-The frontend supports deployment into netlify, you can update the BASE_URL of API end-point and deploy your version of the frontend on netlify.
-
----
 
 ## More Information about Redis Stack
 
