@@ -1,0 +1,29 @@
+{
+  "app_name": "Infinite Blob",
+  "description": "Infinite Blob is a cloud-first microservices demo application. The application is a web-based e-commerce store where users can browse digital items, add them to the cart, and purchase them. Backgrounds tasks like processing payments, invoice generation and sending emails are also there in the project.",
+  "hidden": "false",
+  "rank": "25",
+  "type": "Full App",
+  "contributed_by": "Community",
+  "repo_url": "https://github.com/RajeshJ3/ecom_services",
+  "download_url": "https://github.com/RajeshJ3/ecom_services/archive/refs/heads/main.zip",
+  "hosted_url": "",
+  "quick_deploy": "",
+  "deploy_buttons": [],
+  "language": ["JavaScript", "Python"],
+  "redis_commands": [],
+  "redis_features": ["JSON Document", "Pub/Sub", "Index", "Search"],
+  "redis_modules": ["RediJSON", "RedisTimeseries"],
+  "app_image_urls": [
+    "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/assets/images/01.Home.png",
+    "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/assets/images/02.Product.png",
+    "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/assets/images/03.AdAndRecommendations.png",
+    "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/assets/images/04.Cart.png",
+    "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/assets/images/05.Orders.png",
+    "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/assets/images/Architecture.jpg"
+  ],
+  "youtube_url": "",
+  "special_tags": ["Hackathon", "Dev.to"],
+  "verticals": ["eCommerce"],
+  "markdown": "https://raw.githubusercontent.com/RajeshJ3/ecom_services/main/README.md"
+}
