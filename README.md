@@ -28,11 +28,11 @@ This Project is using the following features of Redis
 | ---------------------------------------------------------------------- | --------------------------------------------- |
 | ![Ad and Recommendations](./assets/images/03.AdAndRecommendations.png) | ![Checkout Page](./assets/images/04.Cart.png) |
 
-# Overview video (Optional)
+# Overview video
 
 Here's a short video that explains the project and how it uses Redis:
 
-[![Embed your YouTube video](https://i.ytimg.com/vi/vyxdC1qK4NE/maxresdefault.jpg)](https://www.youtube.com/watch?v=vyxdC1qK4NE)
+[![YouTube Video](./assets/images/YouTubeThumbnail.png)](https://www.youtube.com/watch?v=Xd8Kx3YMjZE)
 
 ## Architecture
 
@@ -229,17 +229,7 @@ Now, open [http://localhost:3000/](http://localhost:3000/) in browser.
 - Docker & docker compose
 - A redis cloud account (optionally)
 
-## Deployment
-
-The project supports deployment of the backend into kubernetes.
-
-```sh
-$ kubectl create secret generic credentials --from-env-file .env
-...
-
-$ kubectl apply -f k8s/deployment.yaml
-...
-```
+---
 
 ## More Information about Redis Stack
 
